@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+    stdin_open: true
+    env_file: ./backend/.env
+    command:  ./bin/dev
+    tty: true
+    volumes:
+      - $PWD/backend:/backend
+      - gems:/bundle/gems
+    ports:
+      - 3000:3000
+    depends_on:
+      - database
+      - redis
+
+  database:
+    image: postgres:14
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: "password"
+
+  redis:
+    image: redis:6.0
+    command: redis-server
+    volumes:
+      - ./tmp/redis:/data
+
+  frontend:
+    image: node:lts-slim
+    working_dir: "/app"
+    command: bash -c "yarn install && yarn start"
+    volumes:
+      - ./frontend:/app
+      - node_modules:/node_modules
+    ports:
+      - 3001:3000
+
+volumes:
+  postgres:
+  gems:
+  node_modules:

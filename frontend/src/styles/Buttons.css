@@ -1,0 +1,28 @@
+.blue{
+    background-color: #4459A2;
+    color: white;
+    padding-left: 7%;
+    padding-right: 7%;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    border-radius: 2%;
+    font-size: small;
+    font-weight: bold;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.white{
+    background-color: #CED8FB;
+    border-color: #4459A2;
+    color: #4459A2;
+    border-radius: 5%;
+    padding-left: 7%;
+    padding-right: 7%;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    font-size: small;
+    font-weight: bold;
+    white-space: nowrap;
+    cursor: pointer;
+}

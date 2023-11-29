@@ -1,0 +1,3 @@
+schedules:
+  - job_class: MailerJob
+    cron: '0 16 * * *'
